@@ -111,25 +111,14 @@
         }
 
         .language-toggle {
-        /* Icons */
-        .icon { display:inline-block; width: 28px; height: 28px; vertical-align: middle; }
-        .icon-lg { width: 40px; height: 40px; }
-        .icon-xl { width: 56px; height: 56px; }
-        .icon-stroke { stroke: #111111; }
-        .icon-fill { fill: #FFB347; }
-
-        /* Reduced motion support */
-        @media (prefers-reduced-motion: reduce) {
-            .hero-section *, .bg-3d .layer { animation: none !important; transition: none !important; }
-        }
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 16px;
+            right: 16px;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border-radius: 25px;
-            padding: 8px;
+            padding: 6px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -181,6 +170,53 @@
             text-align: center;
             border: none;
             transition: all 0.3s ease;
+        /* Mobile-first responsive refinements */
+        @media (max-width: 640px) {
+            html, body { overflow-x: hidden; }
+            .container { padding-left: 1rem; padding-right: 1rem; }
+            .hero-section { min-height: 90vh; }
+            .hero-content h1 { font-size: 2.25rem; line-height: 1.2; }
+            .hero-content p { font-size: 1rem; }
+            .section-title { font-size: 1.75rem; }
+            .section-subtitle { font-size: 0.95rem; margin-bottom: 1.5rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+            .kpi-card { padding: 1rem; }
+            .flow-card { padding: 1rem; }
+            .demo-container { padding: 1rem; border-radius: 16px; }
+            .phone-mockup { width: 100%; max-width: 340px; height: 60vh; min-height: 460px; margin-left: auto; margin-right: auto; }
+            .phone-screen { border-radius: 16px; }
+            nav .container { padding-left: 0.75rem; padding-right: 0.75rem; }
+            header nav .hidden.md\:flex { display: none !important; }
+            .bg-3d .layer-1, .bg-3d .layer-2, .bg-3d .layer-3 { filter: blur(14px); }
+            /* Demo phone content text scaling */
+            .phone-screen .demo-page h3 { font-size: 1rem; line-height: 1.25; }
+            .phone-screen .demo-page h4 { font-size: 0.95rem; line-height: 1.3; }
+            .phone-screen .demo-page p { font-size: 0.85rem; line-height: 1.35; }
+            .phone-screen .text-3xl { font-size: 1.25rem; }
+            .phone-screen .swipe-card { padding: 16px; }
+            .phone-screen .p-4 { padding: 12px !important; }
+
+        }
+
+        @media (max-width: 375px) {
+            .hero-content h1 { font-size: 1.9rem; }
+            /* XS phones tighter text */
+            .phone-screen .demo-page h3 { font-size: 0.95rem; }
+            .phone-screen .demo-page h4 { font-size: 0.9rem; }
+            .phone-screen .demo-page p { font-size: 0.8rem; }
+            .phone-screen .text-3xl { font-size: 1.1rem; }
+            .phone-screen .swipe-card { padding: 14px; }
+
+            .hero-content p { font-size: 0.95rem; }
+            .phone-mockup { max-width: 300px; height: 55vh; min-height: 420px; }
+        }
+
+        /* Prevent grid cards from overflowing on small screens */
+        .grid { min-width: 0; }
+        .flow-card, .kpi-card, .bg-white.rounded-2xl, .bg-white.rounded-xl { min-width: 0; word-wrap: break-word; overflow-wrap: anywhere; }
+
+        /* Chart containers guard */
+        .chart-container { max-width: 100%; }
+        canvas { max-width: 100% !important; height: auto !important; }
             position: relative;
             overflow: hidden;
         }
@@ -314,10 +350,7 @@
         }
 
         @media (max-width: 640px) {
-            .phone-mockup {
-                width: 320px;
-                height: 640px;
-            }
+            .phone-mockup { width: 100%; max-width: 340px; height: 60vh; min-height: 460px; }
         }
 
         .phone-screen {
@@ -550,22 +583,22 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div class="bg-white rounded-xl p-6 text-center shadow-lg">
-                            <div class="text-3xl mb-3">🏢</div>
+                            <svg class="icon-lg mb-3 icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1.5" stroke="#111111" stroke-width="1.5"/><g fill="#FFB347"><rect x="7.5" y="6" width="2" height="2"/><rect x="11" y="6" width="2" height="2"/><rect x="14.5" y="6" width="2" height="2"/><rect x="7.5" y="9.5" width="2" height="2"/><rect x="11" y="9.5" width="2" height="2"/><rect x="14.5" y="9.5" width="2" height="2"/><rect x="11" y="13" width="5.5" height="5" rx="0.8"/></g></svg>
                             <h4 class="font-bold mb-2" data-en="Employer Services" data-zh="雇主服务">Employer Services</h4>
                             <p class="text-sm text-gray-600" data-en="Tiered packages for job postings and company branding" data-zh="分层的职位发布和公司品牌包">Tiered packages for job postings and company branding</p>
                         </div>
                         <div class="bg-white rounded-xl p-6 text-center shadow-lg">
-                            <div class="text-3xl mb-3">🎓</div>
+                            <svg class="icon-lg mb-3 icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5-10-5Z" fill="#FFB347"/><path d="M4 11v4c3 2 7 2 10 0v-4" stroke="#111111" stroke-width="1.5"/><path d="M20 11v5" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/></svg>
                             <h4 class="font-bold mb-2" data-en="University Partnerships" data-zh="大学合作">University Partnerships</h4>
                             <p class="text-sm text-gray-600" data-en="Annual subscriptions for branded portals and data insights" data-zh="品牌门户和数据洞察的年度订阅">Annual subscriptions for branded portals and data insights</p>
                         </div>
                         <div class="bg-white rounded-xl p-6 text-center shadow-lg">
-                            <div class="text-3xl mb-3">📱</div>
+                            <svg class="icon-lg mb-3 icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" stroke="#111111" stroke-width="1.5"/><rect x="10" y="6" width="4" height="8" fill="#FFB347"/><circle cx="12" cy="17" r="1" fill="#111111"/></svg>
                             <h4 class="font-bold mb-2" data-en="Sponsored Content" data-zh="赞助内容">Sponsored Content</h4>
                             <p class="text-sm text-gray-600" data-en="Local business guides and affiliate partnerships" data-zh="本地商业指南和联盟合作">Local business guides and affiliate partnerships</p>
                         </div>
                         <div class="bg-white rounded-xl p-6 text-center shadow-lg">
-                            <div class="text-3xl mb-3">🚀</div>
+                            <svg class="icon-lg mb-3 icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 3c3 0 6 2 8 4-1 3-4 6-7 7-1 0-2 0-3-1-1-1-1-2-1-3 1-3 4-6 3-7Z" fill="#FFB347"/><path d="M12 12l-3 3-4 1 1-4 3-3" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="9" r="1.5" fill="#111111"/></svg>
                             <h4 class="font-bold mb-2" data-en="Premium Features" data-zh="高级功能">Premium Features</h4>
                             <p class="text-sm text-gray-600" data-en="Optional marketplace promotions and listing boosts" data-zh="可选的市场推广和列表提升">Optional marketplace promotions and listing boosts</p>
                         </div>
@@ -803,28 +836,28 @@
                         <p class="text-gray-600 mb-6 text-center" data-en="Success is measured by user adoption, community impact, and financial self-sufficiency." data-zh="成功通过用户采用、社区影响和财务自给自足来衡量。">Success is measured by user adoption, community impact, and financial self-sufficiency.</p>
                         <ul class="space-y-6 text-left">
                             <li class="flex items-start">
-                                <span class="text-3xl mr-4 mt-1">👥</span>
+                                <svg class="icon-lg mr-4 mt-1 icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex:none"><path d="M4 18c0-2 3-3 5-3s5 1 5 3" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/><path d="M6 10a3 3 0 1 0 6 0 3 3 0 1 0-6 0Z" fill="#FFB347"/><path d="M13 18c0-1.5 2.2-2.4 3.7-2.8" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/><circle cx="16.5" cy="11" r="2.5" fill="#FFB347"/></svg>
                                 <div>
                                     <strong class="font-bold text-gray-800 text-lg" data-en="2,000 Active Users" data-zh="2,000名活跃用户">2,000 Active Users</strong>
                                     <p class="text-gray-600 text-sm mt-1" data-en="Establish a strong foundational community in Edinburgh." data-zh="在爱丁堡建立强大的基础社区。">Establish a strong foundational community in Edinburgh.</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-3xl mr-4 mt-1">🤝</span>
+                                <svg class="icon-lg mr-4 mt-1 icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex:none"><path d="M9 13l2 2a3 3 0 0 0 4 0l3-3" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 12l3-3 3 3 4-4 3 3" fill="#FFB347"/></svg>
                                 <div>
                                     <strong class="font-bold text-gray-800 text-lg" data-en="500 Successful Job Placements" data-zh="500个成功就业安置">500 Successful Job Placements</strong>
                                     <p class="text-gray-600 text-sm mt-1" data-en="Directly connect students with vital income streams." data-zh="直接将学生与重要收入来源联系起来。">Directly connect students with vital income streams.</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-3xl mr-4 mt-1">💰</span>
+                                <svg class="icon-lg mr-4 mt-1 icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="9" fill="#FFB347"/><path d="M8 12h8M10 9.5s1-.5 2-.5 2 .5 2 .5M10 14.5s1 .5 2 .5 2-.5 2-.5" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/></svg>
                                 <div>
                                     <strong class="font-bold text-gray-800 text-lg" data-en="£50,000+ Student Savings" data-zh="学生节省50,000英镑以上">£50,000+ Student Savings</strong>
                                     <p class="text-gray-600 text-sm mt-1" data-en="Value generated via the resource exchange marketplace." data-zh="通过资源交换市场产生的价值。">Value generated via the resource exchange marketplace.</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-3xl mr-4 mt-1">📈</span>
+                                <svg class="icon-lg mr-4 mt-1 icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex:none"><path d="M4 17h16" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/><path d="M6 15l4-4 3 3 5-6" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 15l4-4 3 3 5-6" stroke="#FFB347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 <div>
                                     <strong class="font-bold text-gray-800 text-lg" data-en="£10,000 Monthly Recurring Revenue" data-zh="每月10,000英镑经常性收入">£10,000 Monthly Recurring Revenue</strong>
                                     <p class="text-gray-600 text-sm mt-1" data-en="Achieve financial sustainability by the end of Month 12." data-zh="在第12个月末实现财务可持续性。">Achieve financial sustainability by the end of Month 12.</p>
@@ -840,21 +873,21 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div class="text-center">
                             <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <span class="text-2xl">🚀</span>
+                                <svg class="icon-lg icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 3c3 0 6 2 8 4-1 3-4 6-7 7-1 0-2 0-3-1-1-1-1-2-1-3 1-3 4-6 3-7Z" fill="#FFB347"/><path d="M12 12l-3 3-4 1 1-4 3-3" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="9" r="1.5" fill="#111111"/></svg>
                             </div>
                             <h4 class="font-bold mb-2" data-en="Months 1-6" data-zh="第1-6个月">Months 1-6</h4>
                             <p class="text-sm text-gray-600" data-en="Launch and refine the platform in Edinburgh" data-zh="在爱丁堡启动和完善平台">Launch and refine the platform in Edinburgh</p>
                         </div>
                         <div class="text-center">
                             <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <span class="text-2xl">💪</span>
+                                <svg class="icon-lg icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 13c1.2-2.2 2.6-3.3 4.5-4l1.5 2c.8 1 .7 2.5-.2 3.4-1.6 1.6-4.8 2.6-7.8 1.6" fill="#FFB347"/><path d="M5 16c3 .9 6.2 0 7.8-1.6.9-.9 1-2.4.2-3.4L12 9" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </div>
                             <h4 class="font-bold mb-2" data-en="Months 7-12" data-zh="第7-12个月">Months 7-12</h4>
                             <p class="text-sm text-gray-600" data-en="Achieve financial sustainability and prove the model" data-zh="实现财务可持续性并证明模式">Achieve financial sustainability and prove the model</p>
                         </div>
                         <div class="text-center">
                             <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <span class="text-2xl">🌍</span>
+                                <svg class="icon-lg icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#FFB347"/><path d="M5 12h14M12 5v14M7 7c2 2 8 2 10 0M7 17c2-2 8-2 10 0" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/></svg>
                             </div>
                             <h4 class="font-bold mb-2" data-en="Year 2" data-zh="第2年">Year 2</h4>
                             <p class="text-sm text-gray-600" data-en="Expand to Glasgow and other key Scottish university cities" data-zh="扩展到格拉斯哥和其他苏格兰重要大学城市">Expand to Glasgow and other key Scottish university cities</p>
@@ -862,7 +895,7 @@
 
                         <div class="text-center">
                             <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <span class="text-2xl">🏆</span>
+                                <svg class="icon-lg icon-stroke icon-fill" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 7h10v3a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4V7Z" fill="#FFB347"/><path d="M7 7H5a3 3 0 0 0 0 6h2M17 7h2a3 3 0 0 1 0 6h-2M10 14v2H8v2h8v-2h-2v-2" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/></svg>
                             </div>
                             <h4 class="font-bold mb-2" data-en="Year 3" data-zh="第3年">Year 3</h4>
                             <p class="text-sm text-gray-600" data-en="Begin UK-wide expansion with a Series A funding round" data-zh="通过A轮融资开始英国范围内的扩张">Begin UK-wide expansion with a Series A funding round</p>
@@ -1013,7 +1046,7 @@
             new Chart(housingCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['Intl. Student Homelessness', 'Edinburgh Student Bed Shortfall'],
+                    labels: ['Intl. Homelessness', 'Bed Shortfall (EDI)'],
                     datasets: [{
                         label: 'Homelessness (%)',
                         data: [21, null],
@@ -1034,13 +1067,23 @@
                         legend: { position: 'bottom' }
                     },
                     scales: {
-                        x: { ticks: { color: palette.lightText, font: { size: 12 } } },
+                            x: {
+                                ticks: {
+                                    color: palette.lightText,
+                                    font: { size: 12 },
+                                    callback: function(value){
+                                        const label = this.getLabelForValue(value);
+                                        return label.length > 18 ? label.slice(0,16)+'…' : label;
+                                    }
+                                }
+                            },
+
                         yPercentage: {
                             type: 'linear',
                             position: 'left',
                             beginAtZero: true,
                             max: 25,
-                            title: { display: true, text: 'Percentage (%)', color: palette.text },
+                            title: { display: true, text: '%', color: palette.text },
                             ticks: { color: palette.lightText }
                         },
                         yCount: {
@@ -1048,7 +1091,7 @@
                             position: 'right',
                             min: 1000,
                             max: 20000,
-                            title: { display: true, text: 'Number of Beds', color: palette.text },
+                            title: { display: true, text: 'Beds', color: palette.text },
                             ticks: {
                                 color: palette.lightText,
                                 callback: function(value, index, values) {
@@ -1067,7 +1110,7 @@
             new Chart(distressCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Experienced Poor Mental Health', 'Considered Leaving Course', 'Used Foodbanks'],
+                    labels: ['Poor Mental Health', 'Considered Leaving', 'Used Foodbanks'],
                     datasets: [{
                         label: '% of International Students',
                         data: [50, 29, 10],
@@ -1098,7 +1141,7 @@
             new Chart(fundingCtx, {
                 type: 'pie',
                 data: {
-                    labels: ['Platform Development', 'Operations', 'Growth & Outreach', 'Compliance & Admin'],
+                    labels: ['Platform Dev', 'Operations', 'Growth', 'Compliance'],
                     datasets: [{
                         label: 'Fund Allocation',
                         data: [42, 33, 17, 8],
