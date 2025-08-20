@@ -170,6 +170,10 @@
             text-align: center;
             border: none;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
         /* Mobile-first responsive refinements */
         @media (max-width: 640px) {
             html, body { overflow-x: hidden; }
@@ -217,9 +221,6 @@
         /* Chart containers guard */
         .chart-container { max-width: 100%; }
         canvas { max-width: 100% !important; height: auto !important; }
-            position: relative;
-            overflow: hidden;
-        }
 
         .kpi-card::before {
             content: '';
@@ -424,6 +425,36 @@
         .hidden {
             display: none;
         }
+        /* Mobile demo refinements: remove dark wrapper, enlarge phone, lighten headers */
+        @media (max-width: 640px) {
+            /* Remove dark background wrapper around the phone on mobile */
+            .demo-container { background: transparent; padding: 0; border-radius: 0; margin: 1rem 0; }
+
+            /* Enlarge the demo phone and reduce bezel */
+            .phone-mockup {
+                width: 100%;
+                max-width: 420px;
+                height: 72vh;
+                min-height: 520px;
+                margin-left: auto;
+                margin-right: auto;
+                background: transparent;
+                padding: 0;
+                box-shadow: none;
+                border-radius: 16px;
+            }
+
+            .phone-screen { border-radius: 18px; border: 1px solid #e5e7eb; }
+
+            /* Make in-phone dark page headers light on mobile (without affecting buttons) */
+            .phone-screen .bg-black.p-4.text-center { background-color: #ffffff !important; color: #111111 !important; border-bottom: 1px solid #e5e7eb; }
+            .phone-screen .bg-black.p-4.text-center * { color: #111111 !important; }
+
+            /* Ensure controls are visible on light background */
+            .demo-dot { background: #d1d5db; }
+            .demo-dot.active { background: #FFB347; }
+        }
+
     </style>
 </head>
 <body class="antialiased">
